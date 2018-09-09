@@ -53,37 +53,37 @@ public class TacoServiceImpl implements TacoService {
 
 	//response
 	@Override
-	public OrderTotal createOrder(List<Tacos> tacoOrder) {
-		Double total = 0.00;
-		Double orderTotal = calculateOrderTotal(tacoOrder,total);
-		finalOrder.setTotalOrder(orderTotal);
-		return finalOrder;
+	public Response createOrder(List<Tacos> tacoOrder) {
+		Double orderTotal = calculateOrderTotal(tacoOrder);
+		finalOrder.setOrderTotal(orderTotal);
+		return Response.ok(finalOrder).build();
 	}
 
 	//business logic
-	public Double calculateOrderTotal(List<Tacos> tacoOrder,Double total) {
+	public Double calculateOrderTotal(List<Tacos> tacoOrder) {
+		Double orderTotal = 0.00;
 		int totalQuantity = 0;
 		Double discount = 0.8;
 		for (Tacos taco : tacoOrder) {
 			if (taco.getItem().contains(tacos.get(1).getItem())) {
-				total = (total) + ((tacos.get(1).getPrice()) * (taco.getQuantity()));
+				orderTotal = (orderTotal) + ((tacos.get(1).getPrice()) * (taco.getQuantity()));
 				totalQuantity = totalQuantity + taco.getQuantity();
 			}
 			if (taco.getItem().contains(tacos.get(2).getItem())) {
-				total = (total) + ((tacos.get(2).getPrice()) * (taco.getQuantity()));
+				orderTotal = (orderTotal) + ((tacos.get(2).getPrice()) * (taco.getQuantity()));
 				totalQuantity = totalQuantity + taco.getQuantity();
 			}
 			if (taco.getItem().contains(tacos.get(3).getItem())) {
-				total = (total) + ((tacos.get(3).getPrice()) * (taco.getQuantity()));
+				orderTotal = (orderTotal) + ((tacos.get(3).getPrice()) * (taco.getQuantity()));
 				totalQuantity = totalQuantity + taco.getQuantity();
 			}
 
 		}
 		if (totalQuantity >= 4) {
-			total = total * discount;
+			orderTotal = orderTotal * discount;
 		}
 
-		return total;
+		return orderTotal;
 
 	}
 }
