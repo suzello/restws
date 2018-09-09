@@ -1,4 +1,4 @@
-package com.sushanth.restws;
+/*package com.sushanth.restws;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.hasSize;
@@ -85,4 +85,4 @@ public class RestwsApplicationUnitTests {
 }
 	    
 	
-	
+	*/
