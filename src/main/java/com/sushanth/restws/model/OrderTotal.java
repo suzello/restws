@@ -1,24 +1,18 @@
 package com.sushanth.restws.model;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "OrderTotal")
 public class OrderTotal {
 
 	private String orderTotal = "%s $";
-	private String totalOrder = null;
 
+	public void setOrderTotal(Double Total) {
+		orderTotal = (String.format(orderTotal, Total));
+	}
 	
-	public OrderTotal(String totalOrder) {
-		super();
-		this.totalOrder = totalOrder;
-	}
-	public OrderTotal(){
-		
-	}
-
-	public String getTotalOrder() {
-		return totalOrder;
-	}
-	public void setTotalOrder(Double totalOrder) {
-		this.totalOrder =((String.format(orderTotal, totalOrder)));
+	public String getOrderTotal() {
+		return orderTotal;
 	}
 
 }
